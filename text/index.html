@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Presentation</title>
+</head>
+<body>
+
+    <h1>
+        JAVASCRIPT EVENTS
+    </h1>
+
+    <p>
+        Today, most of the web apps somehow interact with the user or   dynamically change their content depending on the information they receive from the server. 
+        So, what’s the event?
+    </p>
+
+    <h3>
+        Event
+    </h3>
+
+    <p>
+        Event is action that take place in the programmable system that the system tells you about, so that you can react to them somehow, if necessary.
+        For example, if a user clicks a button on a web page, you can respond by displaying an information window </p>
+    <p>
+        In WEB,  events are started inside the browser window and, as a rule, are attached to a specific element that is in it.
+        This can be a single element, a set of elements, an HTML document loaded on the current tab, or the whole browser window. 
+        There are many different events that can happen, such as:
+        Mouse events: for example ‘click’, ‘contextmenu’, ‘mousepover/mouseout’ etc. 
+    </p>
+        <ul>
+            <li>Form element events: such as ‘focus’, ‘submit’</li>
+            <li>Keyboard events  such as ‘keydown’, ‘keyup’</li>
+            <li>Document events, CSS events, And many other. </li>
+        </ul>
+    <p>
+        Full list of javascript events and their description you сan see on the website <a>https://developer.mozilla.org</a> in in the section of Event’
+    </p>    
+
+    <h3>
+        Event handlers
+    </h3>
+
+    <p>To react on events we can assign a handler – a function that runs in case of an event. There are several ways to assign a handler. </p>
+    <p>A handler can be set in HTML with an attribute named on event; But An HTML-attribute is not a convenient place to write a lot of code, 
+        so we’d better create a JavaScript function and call it there. </p>
+    <p>We can bind the function created in the script and point to it in the event attribute of the element in html.</p>
+    <p>Also We can assign a handler using a DOM property on  и &lt;event&gt;.</p>
+    <p>For instance, elem.onclick:</p>
+    <p>If the handler is assigned using an HTML-attribute then the browser reads it, creates a new function from the attribute content and writes it to the DOM property.</p>
+    <p>So this way is actually the same as the previous one.</p>
+        <h5>
+            addEventListener()
+        </h5> 
+    <p>The fundamental problem of the aforementioned ways to assign handlers – we can’t assign multiple handlers to one event. Web-standard developers understood that 
+        long ago and suggested an another way of managing handlers using special methods <i>addEventListener</i>  and <i>removeEventListener.</i></p>
+    <p>They are free of such a problem. This is a syntax  to add the handler: </p>
+
+    <p> where event -is event name; handler – the handler function; options</p>
+    <p>An additional optional object with properties of adding the handler: 
+        To remove a handler we should pass exactly the same function as was assigned. 
+        Please note – if we don’t store the function in a variable, then we can’t remove it. There’s no way to “read back” handlers assigned by addEventListener.</p>  
+       <h5>
+        Event tobjects
+       </h5>
+        
+    <p>Now,  the event handler function are passed an argument: the event object. This object holds additional information about the event. 
+        For example, if we want to know which mouse button was pressed, we can look at the event object’s button property.
+        The information stored in an event object differs per type of event</p>
+
+
+        <h3>
+            Prevent Default()
+        </h3>
+    
+
+	<p>Many events automatically trigger a browser action. For example:  Clicking on a link initiates a new URL.
+    Clicking on the "send" button in the form sends it to the server.Double click on the text - initiates its selection.</p>
+	<p>If we process an event in JavaScript, we often do not need such a browser action. Fortunately, it can be cancelled.</p>
+    <p>There are two ways to cancel the browser's activations:</p>
+	<p>The main way is to use the object of the event. There is a built-in method of event.preventDefault() to cancel a browser action.</p>
+	<p>If the handler is assigned via an event handler (not via addEventListener), you can simply return false from the handler.
+    Bubbling and capturing</p>
+	<p>When an event is initiated by an element that has parental elements  modern browsers perform two different phases - the capture phase and the bubbling phase.</p>
+	<p> In the capture phase, the following occurs: </p>
+	<p> - The browser checks whether the most external element (html as rule) has the event handler registered on it at the capture stage and launches it if so.</p>
+	<p> - It then moves on to the next element inside <html> and does the same, then the next and so on until it reaches the element where the event occurred. </p>
+	<p> The exact opposite is happening in the bubbling phase: </p>
+	<p>The browser checks whether the item on which the event actually occurred has an event handler registered on it in the bubbling phase, and launches it if so. </p>
+	<p>It then moves on to the next direct parent element and does the same, then the next and so on until it reaches the &lt;html&gt; element. </p>
+	<p>In modern browsers all event handlers are registered in the bubbling phase by default.</p>
+
+    <h3>
+        StopPropagation
+    </h3>
+
+    <p>The standard event object has a function called stopPropagation(), which when called in the object's event handler, makes the handler run,
+        but the event does not pop up along the chain, so no other handlers will be started.</p>
+
+    <h3>
+        Summary
+    </h3>
+
+	<p>Event handlers make it possible to detect and react to events happening in ourweb page. 
+        TheaddEventListener method is used to register such a handler. Each event has a type ("keydown","focus", and so on) that identifies it. 
+        Most events are called on a specific DOM element and then propagate to that element’s ancestors, allowing handlers associated with those elements to handle them.
+        When an event handler is called, it is passed an event object with additiona linformation about the event. 
+        This object also has methods that allow us to stop further propagation (stopPropagation) and prevent the browser’s defaul thandling of the event (preventDefault).
+        Pressing a key fires "keydown" and" keyup "events. Pressing a mouse button fires "mousedown","mouseup", and"click"events. 
+        Moving the mouse fires "mousemove" events. Touchscreen interaction will result in "touchstart" , "touchmove", and "touchend" events .
+        Scrolling can be detected with the"scroll" event, and focus changes can be detected with the "focus" and "blur" events. 
+        When the document finishes loading, a "load" event fires on the window.</p>
+    
+    <p>Thank you.</p>
+
+  
+</body>
+
+    <style>
+        body {
+            max-width: 1024px;
+            margin: 0 auto;
+            background: black;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: justify;
+        }
+
+        h1 {
+            color: goldenrod;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: goldenrod;
+        }
+
+        p {
+            margin: 10px 20px;
+        }
+    </style>
+</html>
