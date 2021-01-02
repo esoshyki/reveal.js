@@ -26,119 +26,66 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Javascript Events</h1>
-				</section>
-				<section>
-					<section><h2>Event</h2></section>
-					<section><h2>List of events</h2></section>
-						<section>
-							<h4>Mouse events</h4>
-							<ul>
-								<li><span style="color: yellow">click</span> – when the mouse clicks on an element (touchscreen devices generate it on a tap).</li>
-								<li><span style="color: yellow">contextmenu</span>– when the mouse right-clicks on an element.</li>
-								<li><span style="color: yellow">mouseover / mouseout</span> – when the mouse cursor comes over / leaves an element.</li>
-								<li><span style="color: yellow">mousedown / mouseup</span> – when the mouse button is pressed / released over an element.</li>
-								<li><span style="color: yellow">mousemove</span> – when the mouse is moved.</li>
-							</ul>
-						</section>
-						<section>
-							<h4>Form element events:</h4>
-							<ul>
-								<li><span style="color: yellow">submit</span> – when the visitor submits a form.</li>
-								<li><span style="color: yellow">focus</span> – when the visitor focuses on an element, e.g. on an input.</li>
-							</ul>
-							<h4>Keyboard events:</h4>
-							<ul>
-								<li><span style="color: yellow">keydown and keyup</span> – when the visitor presses and then releases the button.</li>
-							</ul>
-							<h4>Document events:</h4>
-							<ul>
-								<li><span style="color: yellow">DOMContentLoaded</span> – when the HTML is loaded and processed, DOM is fully built.</li>
-							</ul>
-							
-						</section>
-						<section>
-							<h4>CSS events:</h4>
-							<ul>
-								<li><span style="color: yellow">transitionend</span> – when a CSS-animation finishes</li>
-							</ul>
-							<p>And many other...</p>
-						</section>
+					<h1>Event Loop</h1>
+					<img width="650" height="450" src="./assets/1.jpg" alt="event_loop">
 				</section>
 				<section>
 					<section>
-						<h3>Event handlers</h3>
+						<h2>INTRODUTION</h2>
+						<img width="1000" height="400" src="./assets/2.jpg" alt="event_loop1">		
 					</section>
 					<section>
-						<h4>Html attribute</h4>
-						<img src="./assets/3.png" alt="html_attr" width="100%">
+						<h2>Stack</h2>
+						<img width="650" height="450" src="./assets/stack.gif" alt="stack">
 					</section>
 					<section>
-						<h4>JavaScript function</h4>
-						<img src="./assets/1.png" alt="" width="100%">
+						<h2>setTimout</h2>
+						<img  width="720" height="405" src="./assets/stack.gif" alt="stack">
 					</section>
 					<section>
-						<h4>DOM property</h4>
-						<img src="./assets/2.png" alt="" width="100%">
+						<h2>Queue</h2>
+						<img width="720" height="405" src="./assets/queue.gif" alt="queue">
 					</section>
 					<section>
-						<h4>addEventListener</h4>
-						<img src="./assets/4.png" alt="" width="100%">
-						<img src="./assets/5.png" alt="" width="100%">
+						<h2>Event Loop Works!</h2>
+						<img width="720" height="405" src="./assets/eventloop.gif" alt="event_loop">
 					</section>
 					<section>
-						<h4 style="color: red;">WRONG!</h4>
-						<img src="./assets/6.png" alt="" width="100%">
-						<h4 style="color: green">RIGHT!</h4>
-						<img src="./assets/7.png" alt="" width="100%">
+						<h2>Event Loop Made It!</h2>
+						<img width="720" height="405" src="./assets/workend.gif" alt="endend">
 					</section>
+				
 				</section>
-				<section>
+				<section><h2>Understanding</h2>
 					<section>
-						<h2>Event Object</h2>
-						<h4>Example &#8659 &#8659 &#8659</h4>
-						<img src="./assets/8.png" alt="" width="100%">
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>PreventDefault()</h2>
-						<img src="./assets/9.png" alt="" width="100%">
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Bubbling and capturing</h2>
-						<img src="./assets/10.png" alt="">
-						<img src="./assets/11.png" alt="" >
+						<h4>Example</h4>
+						<p style="background-color: black; color: green; text-align: left; padding: 20px" >
+							<span style="color: orange">
+								const
+							</span> foo <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"First"</span>);<br>
+							<span style="color: orange">const</span> bar <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> setTimeout(<span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"Second"</span>), 500);<br>
+							<span style="color: orange">const</span> baz <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"Third"</span>);<br>
+								bar<span style="color: white">()</span>;<br>
+								foo<span style="color: white">()</span>;<br>
+								baz<span style="color: white">()</span>;<br>
+						</p>
 					</section>
 					<section>
-						<h3>Stop propogation</h3>
-						<p>The method for it is event.stopPropagation()</p>
+						<p style="background-color: black; color: green; text-align: left; padding: 20px; font-size: 14px;" >
+							<span style="color: orange">
+								const
+							</span> foo <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"First"</span>);<br>
+							<span style="color: orange">const</span> bar <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> setTimeout(<span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"Second"</span>), 500);<br>
+							<span style="color: orange">const</span> baz <span style="color: darkorange">=</span> <span style="color: white">()</span> <span style="color: darkorange">=></span> console.log(<span style="color: yellow">"Third"</span>);<br>
+								bar<span style="color: white">()</span>;<br>
+								foo<span style="color: white">()</span>;<br>
+								baz<span style="color: white">()</span>;<br>
+						</p>
+						<img width="720" height="405" src="./assets/answer.gif" alt="answer">
 					</section>
-				</section>
+				</section>		
 				<section>
-					<section >
-						<h2>Summary</h2>
-					</section>
-					<section id="fragments">
-						<p class="fragment">Event handlers</p>
-						<p class="fragment">addEventListener()</p>	
-						<p class="fragment">Event type</p>
-						<p class="fragment">'keydown', 'focus'...</p>	
-						<p class="fragment">Event propogation()</p>
-						<p class="fragment">Event object</p>
-					</section>
-					<section id="fragments">
-						<p class="fragment">Events</p>
-						<p class="fragment"><span style="color: yellow">Pressing a key </span> &#8658 "keydown" and" keyup "events</p>
-						<p class="fragment"><span style="color: yellow">Pressing a mouse button </span>&#8658 "mousedown","mouseup", and"click"events</p>
-						<p class="fragment"><span style="color: yellow">Moving the mouse </span>&#8658 "mousemove" events.</p>
-						<p class="fragment"><span style="color: yellow">Touchscreen interaction</span> &#8658 "touchstart" , "touchmove", and "touchend" events</p>
-						<p class="fragment"><span style="color: yellow">Scrolling</span> &#8658 "scroll" event.</p>
-						<p class="fragment"><span style="color: yellow">Focus </span>&#8658 "focus" event and "blur" events.</p>
-						<p class="fragment"><span style="color: yellow">Document is loaded </span> &#8658 "load" event fires on the window.</p>
-					</section>
+					<h1>Summarize</h1>
 				</section>
 				<section>
 					<h1>Thank you</h1>
