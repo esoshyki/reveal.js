@@ -1,22 +1,62 @@
 <h3>Event Loop</h3>
 
-<p>Modern life requires modern approaches to technology. Our applications are becoming more and more multi-tasking and complex. We make requests, get responses, change the structure of the DOM tree, and all this happens continuously</p>
+<p>Modern life requires modern approaches to technology. 
+  Our applications are becoming more and more multi-tasking and complex. 
+  We make requests, get responses, change the structure of the DOM tree, and all this happens continuously</p>
 
-<p>JavaScript is single-threaded: only one task can run at a time. Usually that&rsquo;s no big deal, but now imagine you&rsquo;re running a task which takes 30 seconds.. Ya.. During that task we&rsquo;re waiting for 30 seconds before anything else can happen. It&rsquo;s 2019, no one wants a slow, unresponsive website.</p>
+<p>JavaScript is single-threaded: only one task can run at a time. U
+  sually that&rsquo;s no big deal, but now imagine you&rsquo;re running a task which takes 30 seconds.. 
+  Ya.. During that task we&rsquo;re waiting for 30 seconds before anything else can happen. 
+  It&rsquo;s 2019, no one wants a slow, unresponsive website.</p>
 
-<p>Luckily, the browser gives us some features that the JavaScript engine itself doesn&rsquo;t provide: a Web API. This includes the DOM API, setTimeout, HTTP requests, and so on. This can help us create some async, non-blocking behavior</p>
+<p>Luckily, the browser gives us some features that the JavaScript engine itself doesn&rsquo;t provide: a Web API. 
+  This includes the DOM API, setTimeout, HTTP requests, and so on. 
+  This can help us create some async, non-blocking behavior</p>
 
-<p>When we invoke a function, it gets added to something called the call stack. The call stack is part of the JS engine, this isn&rsquo;t browser specific. It&rsquo;s a stack, meaning that it&rsquo;s first in, last out (think of a pile of pancakes). When a function returns a value, it gets popped off the stack</p>
+<p>So how JavaScript works in browser? </p>
+<p>Our process we can divide in several parts and try to explain it</p>
 
-<p>The respond function returns a <span style="color:red">setTimeout</span> function. The setTimeout is provided to us by the Web API: it lets us delay tasks without blocking the main thread. The callback function that we passed to the setTimeout function, the arrow function () =&gt; { return &#39;Hey&#39; } gets added to the Web API. In the meantime, the setTimeout function and the respond function get popped off the stack, they both returned their values!</p>
+<p>
+  Call stack.<br>
+  When we invoke a function, it gets added to something called the call stack. 
+  The call stack is part of the JS engine, this isn&rsquo;t browser specific. 
+  It&rsquo;s a stack, meaning that it&rsquo;s first in, last out (think of a pile of pancakes).
+  JavaScript can do one single thing at a time because it has only one call stack.
+  The call stack is a mechanism that helps the JavaScript interpreter to keep track of the functions that a script calls.
+  Every time a script or function calls a function, it's added to the top of the call stack. Every time the function exits, the interpreter removes it from the call stack.
+  A function either exits through a return statement or by reaching the end of the scope.</p>
 
-<p>In the Web API, a timer runs for as long as the second argument we passed to it, 1000ms. The callback doesn&rsquo;t immediately get added to the call stack, instead it&rsquo;s passed to something called the queue.</p>
+<p>
+  Heap<br>
+  The JavaScript heap is where objects are stored when we define functions or variables.
+  Since it doesn't affect the call stack and the event loop, it would be out of the scope of this video to explain how JavaScript's memory allocation works.
+  If you want to learn more about this topic, I recommend to check out articles on JavaScript's memory management.
+</p>
 
-<p>This can be a confusing part: it doesn&#39;t mean that the callback function gets added to the callstack(thus returns a value) after 1000ms! It simply gets added to the queue after 1000ms. But it&rsquo;s a queue, the function has got to wait for its turn!</p>
+<p>
+  Callback queue.<br>
 
-<p>Now this is the part we&rsquo;ve all been waiting for&hellip; Time for the event loop to do its only task: <span style="color:red">connecting the queue with the call stack!</span> If the call stack is empty, so if all previously invoked functions have returned their values and have been popped off the stack, the first item in the queue gets added to the call stack. In this case, no other functions were invoked, meaning that the call stack was empty by the time the callback function was the first item in the queue.</p>
+</p>
 
-<p>Listen to me is fun, but you&#39;ll only get entirely comfortable with this by actually working with it over and over. Try to figure out what gets logged to the console if we run the following:</p>
+<p>The respond function returns a <span style="color:red">setTimeout</span> function. 
+  The setTimeout is provided to us by the Web API: it lets us delay tasks without blocking the main thread. 
+  The callback function that we passed to the setTimeout function, the arrow function () =&gt; { return &#39;Hey&#39; } gets added to the Web API. In the meantime, the setTimeout function and the respond function get popped off the stack, they both returned their values!</p>
+
+<p>In the Web API, a timer runs for as long as the second argument we passed to it, 1000ms. 
+  The callback doesn&rsquo;t immediately get added to the call stack, instead it&rsquo;s passed to something called the queue.</p>
+
+<p>This can be a confusing part: it doesn&#39;t mean that the callback function gets 
+  dded to the callstack(thus returns a value) after 1000ms! It simply gets added to 
+  the queue after 1000ms. But it&rsquo;s a queue, the function has got to wait for its turn!</p>
+
+<p>Now this is the part we&rsquo;ve all been waiting for&hellip; 
+  Time for the event loop to do its only task: <span style="color:red">connecting 
+    the queue with the call stack!</span> If the call stack is empty, so if all
+     previously invoked functions have returned their values and have been popped off the stack, the first item in the queue gets added to the call stack. In this case, no other functions were invoked, meaning that the call stack was empty by the time the callback function was the first item in the queue.</p>
+
+<p>Listen to me is fun, but you&#39;ll only get entirely comfortable with 
+  this by actually working with it over and over. Try to figure out what gets logged 
+  to the console if we run the following:</p>
 
 <p>&nbsp;</p>
 
