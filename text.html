@@ -54,6 +54,12 @@
     the queue with the call stack!</span> If the call stack is empty, so if all
      previously invoked functions have returned their values and have been popped off the stack, the first item in the queue gets added to the call stack. In this case, no other functions were invoked, meaning that the call stack was empty by the time the callback function was the first item in the queue.</p>
 
+<p>all tasks that the event loop puts in the queue are divided into two types.
+Microtasks and macrotasks. Scripts, setTimeouts and callbacks are macro tasks. 
+Microtasks are mainly results of promisses.
+The queue of mierotasks has a priority and will be executed all after 
+the completion of the last macrotask.</p>
+
 <p>Listen to me is fun, but you&#39;ll only get entirely comfortable with 
   this by actually working with it over and over. Try to figure out what gets logged 
   to the console if we run the following:</p>
